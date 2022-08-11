@@ -8,6 +8,11 @@ const myLibrary = [{
     title: "I am legend",
     pages: "160",
     read: true
+}, {
+    author: "Richard Matheson",
+    title: "I am legend",
+    pages: "160",
+    read: true
 }]
 
 const headers = ["Author", "Title", "Pages", "Finished", "Remove"]
@@ -28,7 +33,6 @@ let table = document.createElement("TABLE");
 
 function createTable() {
     let header = table.createTHead();
-
     let headerRow = header.insertRow(0);
 
     for (let i = 0; i < headers.length; i++) {
@@ -41,18 +45,17 @@ function createTable() {
 createTable(...headers)
 
 let checkbox;
+let remove = document.createElement("BUTTON");
+let body = table.createTBody();
+let bodyRow = body.insertRow(0);
+
 
 function Book() {
     // create new book slot but not yet add to table
-
-    let body = table.createTBody();
-
-    let bodyRow = body.insertRow(0);
-
     for (let i = 1; i < arguments.length + 1; i++) {
         checkbox = document.createElement("INPUT");
         checkbox.type = "checkbox";
-        let remove = document.createElement("BUTTON");
+        remove = document.createElement("BUTTON");
         remove.type = "button";
         remove.textContent = "Remove"
         bodyRow = table.insertRow(i);
@@ -69,14 +72,15 @@ function Book() {
             checkbox.checked = true;
         }
 
+        remove.id = i;
         bodyRow.insertCell(4).append(remove);
+
+        // remove.setAttribute("placement", i-1)
 
         // console.log(myLibrary[i - 1].read)
 
     }
 }
-
-
 
 Book(...myLibrary)
 
@@ -84,7 +88,17 @@ function addBookToLibrary() {
     // add to table only
 
 
-
-
 }
+
+remove.addEventListener('click', function () {
+    console.log("yes")
+    console.log(this.id)
+    this.parentNode.parentNode.parentNode.removeChild(bodyRow)
+
+    // this.parentNode.removeChild(remove)
+
+
+    // console.log(remove.getAttribute("placement"))
+
+})
 
