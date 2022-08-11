@@ -2,3 +2,31 @@
     box-sizing: border-box;
 }
 
+.popup {
+    /* visibility: hidden; */
+}
+
+.popup {
+    display: grid;
+    position: fixed;
+    left: 30%;
+    top: 0;
+    border: black solid 1px;
+    border-radius: 10px;
+    width: 300px;
+    justify-content: center;
+}
+
+.content {
+    display: grid;
+    grid-template-rows: repeat(3, 50px);
+}
+
+.combine {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#pages {
+    width: 60px
+}
