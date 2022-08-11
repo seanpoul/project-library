@@ -10,9 +10,7 @@ const myLibrary = [{
     read: true
 }]
 
-// console.log(myLibrary[0].title)
-// console.log(myLibrary[1].title)
-
+const headers = ["Author", "Title", "Pages", "Finished"]
 
 newBook.addEventListener('click', () => {
     if (document.getElementById('popup').style.visibility = "hidden") {
@@ -26,22 +24,47 @@ addBook.addEventListener('click', () => {
     }
 })
 
-// function Book(author, title, pages,read) {
-//     this.author = author;
-//     console.log(author)
-// }
+let table = document.createElement("TABLE");
 
-function Book() {
-    for(var i=0; i<arguments.length; i++){
-        console.log(arguments[i]);
-   }
-   console.log(myLibrary.author[1])
+function createTable() {
+    let header = table.createTHead();
+
+    let headerRow = header.insertRow(0);
+
+    for (let i = 0; i < headers.length; i++) {
+        headerRow.insertCell(i).textContent = headers[i];
+    }
+
+    document.body.append(table);
 }
 
+createTable(...headers)
+
+function Book() {
+    // create new book slot but not yet add to table
+
+    let body = table.createTBody();
+
+    let bodyRow = body.insertRow(0);
+
+    for (let i = 1; i < arguments.length + 1; i++) {
+        bodyRow = table.insertRow(i);
+        bodyRow.insertCell(0).textContent = myLibrary[i - 1].author;
+        bodyRow.insertCell(1).textContent = myLibrary[i - 1].title;
+        bodyRow.insertCell(2).textContent = myLibrary[i - 1].pages;
+        bodyRow.insertCell(3).textContent = myLibrary[i - 1].read;
+    }
+    // document.body.append(table);
+
+}
 
 Book(...myLibrary)
 
 function addBookToLibrary() {
+    // add to table only
+
+
+
 
 }
 

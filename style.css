@@ -39,3 +39,20 @@
     height: 24px;
     width: 80px;
 }
+
+table {
+    border: black solid 1px;
+}
+
+thead {
+    font-weight: bold;
+}
+
+tbody>tr>td {
+    /* font-weight: bold; */
+    border: black solid 1px;
+}
+
+tbody>tr:nth-child(odd){
+    background-color: lightgray;
+}
