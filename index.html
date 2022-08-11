@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <button id="addBook">New book</button>
+    <button id="newBook">New book</button>
 
     <table>
         <thead>
@@ -28,18 +28,18 @@
 
 
 
-    <form action="" class="popup">
+    <form action="" class="popup" id="popup">
         <h1>Add new book</h1>
-        <div class="content">
+        <div class="formContent">
             <div class="authorName">
                 <label for="author">Author</label>
                 <input type="text" id="author">
             </div>
-            <bookName>
+            <div class="bookTitle">
                 <label for="title">Title</label>
                 <input type="text" id="title">
-            </bookName>
-            <div class="combine">
+            </div>
+            <div class="pageFinish">
                 <div class="pageNumber">
                     <label for="pages">Pages</label>
                     <input type="number" id="pages">
@@ -49,6 +49,7 @@
                     <input type="checkbox" id="read">
                 </div>
             </div>
+            <button class="addBook" id="addBook">Add Book</button>
         </div>
     </form>
 </body>
