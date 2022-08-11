@@ -9,9 +9,9 @@ const myLibrary = [{
     pages: "160",
     read: true
 }, {
-    author: "Richard Matheson",
-    title: "I am legend",
-    pages: "160",
+    author: "J.R.R. Tolkien",
+    title: "The Hobbit",
+    pages: "295",
     read: true
 }]
 
@@ -45,20 +45,24 @@ function createTable() {
 createTable(...headers)
 
 let checkbox;
-let remove = document.createElement("BUTTON");
+let removeBtn = document.createElement("BUTTON");
 let body = table.createTBody();
 let bodyRow = body.insertRow(0);
 
+let getTable = document.getElementById("allBooks");
+
+removeBtn.type = "button";
 
 function Book() {
     // create new book slot but not yet add to table
     for (let i = 1; i < arguments.length + 1; i++) {
         checkbox = document.createElement("INPUT");
         checkbox.type = "checkbox";
-        remove = document.createElement("BUTTON");
-        remove.type = "button";
-        remove.textContent = "Remove"
+        removeBtn = document.createElement("BUTTON");
+        removeBtn.textContent = "Remove"
         bodyRow = table.insertRow(i);
+        bodyRow.className = "bookInfo";
+        bodyRow.id = "row" + i;
         bodyRow.insertCell(0).textContent = myLibrary[i - 1].author;
         bodyRow.insertCell(1).textContent = myLibrary[i - 1].title;
         bodyRow.insertCell(2).textContent = myLibrary[i - 1].pages;
@@ -72,17 +76,28 @@ function Book() {
             checkbox.checked = true;
         }
 
-        remove.id = i;
-        bodyRow.insertCell(4).append(remove);
+        removeBtn.id = "btn" + i;
+        removeBtn.className = "kill";
+        bodyRow.insertCell(4).append(removeBtn);
 
-        // remove.setAttribute("placement", i-1)
-
+        
+        // document.querySelector(bodyRow.id).addEventListener('click', (event) => {
+        //     console.log(event)
+        //     // let bookArray = Array.from(document.querySelectorAll(".bookInfo"));
+        //     let bookArray = document.querySelectorAll(".bookInfo");
+        //     // console.log(bookArray)
+        //     deleteRow(removeBtn)
+        // })
+        
         // console.log(myLibrary[i - 1].read)
-
     }
 }
 
 Book(...myLibrary)
+
+document.querySelectorAll(bodyRow.id).addEventListener('click',() => {
+    console.log()
+})
 
 function addBookToLibrary() {
     // add to table only
@@ -90,15 +105,16 @@ function addBookToLibrary() {
 
 }
 
-remove.addEventListener('click', function () {
-    console.log("yes")
-    console.log(this.id)
-    this.parentNode.parentNode.parentNode.removeChild(bodyRow)
-
-    // this.parentNode.removeChild(remove)
+function deleteRow(removeBtn) {
+    console.log(bodyRow)
 
 
-    // console.log(remove.getAttribute("placement"))
 
-})
+}
+
+
+// removeBtn.addEventListener('click', function () {
+//     this.parentNode.parentNode.parentNode.removeChild(bodyRow)
+// })
+
 
