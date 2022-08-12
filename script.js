@@ -16,6 +16,8 @@ const myLibrary = [{
 }]
 
 const headers = ["Author", "Title", "Pages", "Finished", "Remove"]
+const newBook = document.getElementById('newBook');
+const addBook = document.getElementById('addBook');
 
 newBook.addEventListener('click', () => {
     if (document.getElementById('popup').style.visibility = "hidden") {
@@ -80,37 +82,14 @@ function Book() {
         removeBtn.className = "kill";
         bodyRow.insertCell(4).append(removeBtn);
 
-
-        // document.querySelector(bodyRow.id).addEventListener('click', (event) => {
-        //     console.log(event)
-        //     // let bookArray = Array.from(document.querySelectorAll(".bookInfo"));
-        //     let bookArray = document.querySelectorAll(".bookInfo");
-        //     // console.log(bookArray)
-        //     deleteRow(removeBtn)
-        // })
-
-
+        removeBtn.addEventListener('click', (e) => {
+            deleteRow(e)
+        })
 
     }
 }
 
 Book(...myLibrary)
-
-document.getElementById(bodyRow.id).click()
-
-body.onclick = function (e) {
-    console.log(e)
-    console.log(removeBtn.rowIndex)
-}
-
-onclick = (event) => {
-    for (let i = 1; i < myLibrary.length + 1; i++) {
-        if (event.target.id === "btn" + i) {
-            table.deleteRow(i)
-        }
-    }
-}
-
 
 
 function addBookToLibrary() {
@@ -119,16 +98,7 @@ function addBookToLibrary() {
 
 }
 
-function deleteRow(removeBtn) {
-    console.log(bodyRow)
 
-
-
+function deleteRow(e) {
+    e.target.parentElement.parentElement.remove();
 }
-
-
-// removeBtn.addEventListener('click', function () {
-//     this.parentNode.parentNode.parentNode.removeChild(bodyRow)
-// })
-
-
