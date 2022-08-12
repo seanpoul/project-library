@@ -98,6 +98,11 @@ Book(...myLibrary)
 
 document.getElementById(bodyRow.id).click()
 
+body.onclick = function (e) {
+    console.log(e)
+    console.log(removeBtn.rowIndex)
+}
+
 onclick = (event) => {
     for (let i = 1; i < myLibrary.length + 1; i++) {
         if (event.target.id === "btn" + i) {
