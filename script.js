@@ -80,7 +80,7 @@ function Book() {
         removeBtn.className = "kill";
         bodyRow.insertCell(4).append(removeBtn);
 
-        
+
         // document.querySelector(bodyRow.id).addEventListener('click', (event) => {
         //     console.log(event)
         //     // let bookArray = Array.from(document.querySelectorAll(".bookInfo"));
@@ -88,16 +88,25 @@ function Book() {
         //     // console.log(bookArray)
         //     deleteRow(removeBtn)
         // })
-        
-        // console.log(myLibrary[i - 1].read)
+
+
+
     }
 }
 
 Book(...myLibrary)
 
-document.querySelectorAll(bodyRow.id).addEventListener('click',() => {
-    console.log()
-})
+document.getElementById(bodyRow.id).click()
+
+onclick = (event) => {
+    for (let i = 1; i < myLibrary.length + 1; i++) {
+        if (event.target.id === "btn" + i) {
+            table.deleteRow(i)
+        }
+    }
+}
+
+
 
 function addBookToLibrary() {
     // add to table only
