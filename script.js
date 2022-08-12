@@ -8,6 +8,7 @@ newBookBtn.addEventListener('click', () => {
     if (document.getElementById('popup').style.visibility = "hidden") {
         document.getElementById('popup').style.visibility = "visible";
     }
+    document.getElementById('popup').reset();
 })
 
 addBookBtn.addEventListener('click', () => {
@@ -93,5 +94,4 @@ function deleteBtnRow(e) {
     console.log(getIndexNum)
     e.target.parentElement.parentElement.remove(getIndexNum);
     myLibrary.splice(getIndexNum, 1);
-
 }
