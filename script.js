@@ -1,20 +1,3 @@
-// const myLibrary = [{
-//     author: "J.R.R. Tolkien",
-//     title: "The Hobbit",
-//     pages: "295",
-//     read: true
-// }, {
-//     author: "Richard Matheson",
-//     title: "I am legend",
-//     pages: "160",
-//     read: true
-// }, {
-//     author: "J.R.R. Tolkien",
-//     title: "The Hobbit",
-//     pages: "295",
-//     read: true
-// }]
-
 const myLibrary = []
 
 const headers = ["Author", "Title", "Pages", "Finished", "Remove"]
@@ -35,6 +18,7 @@ addBookBtn.addEventListener('click', () => {
 })
 
 let table = document.createElement("TABLE");
+let body;
 
 function createTableLayout() {
     table.innerHTML = "";
@@ -43,7 +27,7 @@ function createTableLayout() {
     let headerRow = header.insertRow(0);
     let checkbox;
     let removeBtn = document.createElement("BUTTON");
-    let body = table.createTBody();
+    body = table.createTBody();
     let bodyRow = body.insertRow(0);
 
     removeBtn.type = "button";
@@ -100,10 +84,14 @@ function book() {
 }
 
 function addBookToLibrary() {
-    // add to table only
     createTableLayout(...myLibrary)
 }
 
 function deleteBtnRow(e) {
-    e.target.parentElement.parentElement.remove();
+    console.log(e);
+    let getIndexNum = Array.from(body.children).indexOf(e.target.parentElement.parentElement)
+    console.log(getIndexNum)
+    e.target.parentElement.parentElement.remove(getIndexNum);
+    myLibrary.splice(getIndexNum, 1);
+
 }
