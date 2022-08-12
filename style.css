@@ -7,7 +7,7 @@ body {
     grid-template-columns: 100%;
 }
 
-#newBook {
+#newBookBtn {
     height: 30px;
     width: 80px;
     margin-bottom: 20px;
@@ -42,7 +42,7 @@ body {
     width: 60px
 }
 
-#addBook {
+#addBookBtn {
     display: grid;
     justify-self: center;
     height: 24px;
