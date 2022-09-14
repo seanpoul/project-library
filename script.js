@@ -3,6 +3,10 @@ const myLibrary = []
 const headers = ["Author", "Title", "Pages", "Finished", "Remove"]
 const newBookBtn = document.getElementById('newBookBtn');
 const addBookBtn = document.getElementById('addBookBtn');
+const authorForm = document.getElementById('author');
+const titleForm = document.getElementById('title');
+const pagesForm = document.getElementById('pages');
+
 
 newBookBtn.addEventListener('click', () => {
     if (document.getElementById('popup').style.visibility = "hidden") {
@@ -11,11 +15,14 @@ newBookBtn.addEventListener('click', () => {
     document.getElementById('popup').reset();
 })
 
-addBookBtn.addEventListener('click', () => {
-    if (document.getElementById('popup').style.visibility = "visible") {
-        document.getElementById('popup').style.visibility = "hidden";
+addBookBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    if (authorForm.validity.valid && titleForm.validity.valid && pagesForm.validity.valid) {
+        if (document.getElementById('popup').style.visibility = "visible") {
+            document.getElementById('popup').style.visibility = "hidden";
+            book();
+        }
     }
-    book();
 })
 
 let table = document.createElement("TABLE");
@@ -38,8 +45,6 @@ function createTableLayout() {
     }
 
     document.body.append(table);
-
-    console.log(arguments.length)
 
     for (let i = 1; i < arguments.length + 1; i++) {
         checkbox = document.createElement("INPUT");
@@ -89,9 +94,7 @@ function addBookToLibrary() {
 }
 
 function deleteBtnRow(e) {
-    console.log(e);
     let getIndexNum = Array.from(body.children).indexOf(e.target.parentElement.parentElement)
-    console.log(getIndexNum)
     e.target.parentElement.parentElement.remove(getIndexNum);
     myLibrary.splice(getIndexNum, 1);
 }
